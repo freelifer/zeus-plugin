@@ -1,0 +1,43 @@
+<idea-plugin>
+    <id>com.freelifer.zeus.plugin</id>
+    <name>Zeus-Plugin</name>
+    <version>1.0</version>
+    <vendor email="support@yourcompany.com" url="http://www.yourcompany.com">YourCompany</vendor>
+
+    <description><![CDATA[
+      Enter short description for your plugin here.<br>
+      <em>most HTML tags may be used</em>
+    ]]></description>
+
+    <change-notes><![CDATA[
+      Add change notes here.<br>
+      <em>most HTML tags may be used</em>
+    ]]>
+    </change-notes>
+
+    <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/build_number_ranges.html for description -->
+    <idea-version since-build="145.0"/>
+
+    <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
+         on how to target different products -->
+    <!-- uncomment to enable plugin in all products
+    <depends>com.intellij.modules.lang</depends>
+    -->
+
+    <extensions defaultExtensionNs="com.intellij">
+        <!-- Add your extensions here -->
+        <applicationConfigurable instance="freelifer.zeus.plugin.settings.Settings"/>
+        <fileTemplateGroup implementation="org.jetbrains.zeus.ZeusFileTemplateProvider"/>
+    </extensions>
+
+    <actions>
+        <!-- Add your actions here -->
+        <group id="freelifer.zeus.plugin.MainGroup" text="_PigTools" popup="true">
+            <add-to-group group-id="ToolsMenu" anchor="first"/>
+            <action id="freelifer.zeus.plugin.routers" class="freelifer.zeus.plugin.actions.RoutersAction"
+                    text="Routers" description="zeus plugin for Routers create java file">
+            </action>
+        </group>
+    </actions>
+
+</idea-plugin>
