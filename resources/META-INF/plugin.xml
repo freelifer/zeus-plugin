@@ -38,6 +38,16 @@
                     text="Routers" description="zeus plugin for Routers create java file">
             </action>
         </group>
+
+        <!-- Add GenerateGroup-->
+        <action id="freelifer.zeus.plugin.generate.routers"
+                class="freelifer.zeus.plugin.actions.GenerateRoutersAction"
+                text="Generate Routes Injections"
+                description="Plugin for generating Routes injections from selected layout XMLs in activities/fragments/adapters">
+
+            <add-to-group group-id="GenerateGroup"/>
+            <!-- <add-to-group group-id="ProjectViewPopupMenu" /> file pop-up -->
+        </action>
     </actions>
 
 </idea-plugin>

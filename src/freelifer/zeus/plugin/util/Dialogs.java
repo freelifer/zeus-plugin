@@ -2,6 +2,7 @@ package freelifer.zeus.plugin.util;
 
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.DataKeys;
+import com.intellij.openapi.project.Project;
 import com.intellij.openapi.ui.MessageType;
 import com.intellij.openapi.ui.popup.Balloon;
 import com.intellij.openapi.ui.popup.JBPopupFactory;
@@ -15,15 +16,41 @@ import com.intellij.ui.awt.RelativePoint;
  */
 public class Dialogs {
 
-    public static void showErrorDialog(String text, AnActionEvent e) {
-        StatusBar statusBar = WindowManager.getInstance().getStatusBar(DataKeys.PROJECT.getData(e.getDataContext()));
-
-        if (statusBar != null) {
-            JBPopupFactory.getInstance()
-                    .createHtmlTextBalloonBuilder(text, MessageType.ERROR, null)
-                    .setFadeoutTime(3000)
-                    .createBalloon()
-                    .show(RelativePoint.getCenterOf(statusBar.getComponent()), Balloon.Position.atRight);
-        }
+    /**
+     * Display simple notification - information
+     *
+     * @param project
+     * @param text
+     */
+    public static void showInfoNotification(Project project, String text) {
+        showNotification(project, MessageType.INFO, text);
     }
+
+    /**
+     * Display simple notification - error
+     *
+     * @param project
+     * @param text
+     */
+    public static void showErrorNotification(Project project, String text) {
+        showNotification(project, MessageType.ERROR, text);
+    }
+
+    /**
+     * Display simple notification of given type
+     *
+     * @param project
+     * @param type
+     * @param text
+     */
+    public static void showNotification(Project project, MessageType type, String text) {
+        StatusBar statusBar = WindowManager.getInstance().getStatusBar(project);
+
+        JBPopupFactory.getInstance()
+                .createHtmlTextBalloonBuilder(text, type, null)
+                .setFadeoutTime(7500)
+                .createBalloon()
+                .show(RelativePoint.getCenterOf(statusBar.getComponent()), Balloon.Position.atRight);
+    }
+
 }

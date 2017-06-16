@@ -117,6 +117,18 @@ public class SettingsPanel extends JPanel {
         xlsxPanel.add(targetButton, s);
         settings.add("North", xlsxPanel);
 
+        // routers prefix
+        JLabel routersPrefix = new JLabel("Routers Method Prefix");
+        JTextField routersPrefixTextField = new JTextField();
+
+        s.gridwidth = 1;
+        s.weightx = 0;
+        s.weighty = 0;
+        xlsxPanel.add(routersPrefix, s);
+        s.gridwidth = 1;
+        s.weightx = 1;
+        xlsxPanel.add(routersPrefixTextField, s);
+
         button.addActionListener((e) -> {
             JFileChooser jfc = new JFileChooser();
             jfc.setFileSelectionMode(JFileChooser.FILES_ONLY);
